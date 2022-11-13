@@ -1,0 +1,47 @@
+body{
+    background-image: url("../Imagenes/iStock-513475408.jpg");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+}
+.container{
+    background-color: white;
+    height: 100%;
+    background-attachment: fixed;
+    padding-bottom: 10vh;
+}
+.stats span{
+
+    font-size: 29px;
+   }
+    
+  .wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30vh}
+  .profile{
+    position: relative;
+    /* background:url("../imagenes/avatar.jpg"); */
+    background-size: cover;
+    cursor: pointer;
+}
+  .overlay{
+    width: 100%;
+    height: 100%;
+    background:rgba(63, 59, 71, 0.8);
+    border-radius: 12px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 1s;
+    border-radius: 6px
+}
+  .profile:hover .overlay{
+    opacity: 1
+}
+a{
+  text-align: center;
+}
+  a:hover{
+    color: white;
+  }
