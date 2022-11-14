@@ -11,7 +11,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="nav justify-content-end">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">BBr</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -52,6 +52,7 @@
          
           $imagen="";
           $texto="";
+          //Cambia la variable imagen y texto dependiendo de la puntuación del jugador
             if($_SESSION["puntuacion"]<=10){
               $imagen="homer1.gif";
               $texto="Lo has intentado pero te falta un poco mas suerte para la proxima, tu resultado ";
@@ -67,7 +68,8 @@
               $texto="Muy bien eres un profesional, tu resultado ";
             }
           ?>
-        </div>   
+        </div> 
+          <!-- Mostramos en la tarjeta la imagen y el resultado de la partida del jugador -->
         <div class="card" style="width: 18rem;" id="formContent">
           <img class="card-img-top" src="../imagenes/<?php echo $imagen;?>" alt="Card image cap">
           <div class="card-body">

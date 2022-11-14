@@ -14,7 +14,7 @@
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="nav justify-content-end">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">BBr</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -50,10 +50,11 @@
 </nav> 
 <div class="container">
     <div class="row my-5 py-5">
+      <!-- require_once Para obtener el arrayPuntos con todos los datos de las 5 mejores partidas -->
       <?php require_once("../control/topcinco.php");?>
 
         <div class="col-sm-12 col-md-12">
-            <!-- primera tabla de mejores puntuaciones juego Whiskie -->
+            <!-- tabla de mejores puntuaciones juego Whiskie -->
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -75,7 +76,6 @@
                     <?php endforeach;?>
                 </tbody>
             </table>
-            <!-- Tabla mejores puntuaciones juego Cerveza -->
          
         </div>
         <div class="col-sm-12 col-md-7">

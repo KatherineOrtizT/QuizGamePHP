@@ -9,28 +9,26 @@
     <link rel="stylesheet" href="Fondojuego.css" />
     <title>Document</title>
 </head>
-<body>
-    
+<body>   
     <?php
-     $contador=1;
-     
-        session_start();       
-        if(isset($_POST["enviar"])){
+     $contador=1;  //Inicia en la pregunta 1 
+     session_start();       
+        if(isset($_POST["enviar"])){ //Si se ha pulsado enviar sumamos contador y examinamos las respuestas para sumar puntuacion
             $contador=$_SESSION["numeropregunta"]; 
             $respondio=$_POST["correcta"];
             $valor = "";
-            if(isset($_POST["respuesta"])){
+            if(isset($_POST["respuesta"])){ //Para las respuestas
                 $valor =$_POST["respuesta"];
             }
          
-            if(isset($_POST["respuestaa"])){
+            if(isset($_POST["respuestaa"])){ //Para las respuestas de checkbox
                 $valor=$_POST["respuestaa"].$_POST["respuestab"].$_POST["respuestac"].$_POST["respuestad"];
             }
             if($valor==$respondio){
                 $_SESSION["puntuacion"]=$_SESSION["puntuacion"]+5;
             }
           
-        }else{
+        }else{ //Se ejecuta la primera vez, si no se ha pulsado el botón enviar
             $_SESSION["preguntaTipo"]=$_GET["tipo"];
             $_SESSION["numeropregunta"]=1;   
             $_SESSION["puntuacion"]=0;      

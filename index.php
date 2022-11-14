@@ -10,7 +10,7 @@
 </head>
 <body>
 
-
+<!-- Si anteriormente alguien le dio a recordar se creo una cookie y vamos directamente a la página registrados -->
 <?php
 if(isset($_COOKIE["nomUsuario"])){
     header("location:view/Registrados.php");
@@ -19,7 +19,7 @@ if(isset($_COOKIE["nomUsuario"])){
 
 
 
-
+<!-- Formulario de inicio de login -->
 <div class="wrapper fadeInDown zero-raduis">
   	  <div class="pt-5" id="formContent">
   	    <form action="model/comprueba.php" method="post">
