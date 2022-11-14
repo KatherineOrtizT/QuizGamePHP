@@ -49,21 +49,33 @@
                 $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 $base->exec("SET CHARACTER SET utf8");
                 // para insertar necesitamos que todos los campos restantes no sean not null
-                // $sql= "SELECT nombreUsuario from usuarios"; 
-                // $resultado =$base -> prepare($sql);
-                // $resultado->execute(array());
-                $sql= "INSERT INTO usuarios (nombreUsuario,contraseña) VALUES (:c_art, :seccion)";  
-                $resultado = $base -> prepare($sql); 
-                $resultado->execute(array (":c_art"=>$nombreUsuario,":seccion"=>$pass_encriptado)); // funcion flecha va con un igual
-                //Creamos una sesión y pasamos a la página registrados
-                session_start();
-                $_SESSION["nombreUsuario"]=$_POST["login"];
-                header("location:../view/Registrados.php");
-                if(isset($_POST["recordar"])){ //Si le dio a recordarcreamos Una cookie
-                    setcookie("nomUsuario",$_POST["login"], time()+60);// si no marca el recordar no crea ala cookie
-                   
-                } 
-            $resultado->closeCursor();
+                $sql= "SELECT nombreUsuario from usuarios"; 
+                $resultado =$base -> prepare($sql);
+                $resultado->execute(array());
+                while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){
+                    if($nombreUsuario==$registro["nombreUsuario"]){ 
+                        $autenticar=true;
+                    }
+                }
+                if($autenticar){
+                    header("location:../index.php");
+                }else{
+                    $sql= "INSERT INTO usuarios (nombreUsuario,contraseña) VALUES (:c_art, :seccion)";  
+                    $resultado = $base -> prepare($sql); 
+                    $resultado->execute(array (":c_art"=>$nombreUsuario,":seccion"=>$pass_encriptado)); // funcion flecha va con un igual
+                    //Creamos una sesión y pasamos a la página registrados
+                    session_start();
+                    $_SESSION["nombreUsuario"]=$_POST["login"];
+                    header("location:../view/Registrados.php");
+                    if(isset($_POST["recordar"])){ //Si le dio a recordarcreamos Una cookie
+                        setcookie("nomUsuario",$_POST["login"], time()+60);// si no marca el recordar no crea ala cookie
+                       
+                    } 
+               
+                }
+                 $resultado->closeCursor();
+
+               
              } catch (Exception $e) {
                      die ('error' .$e->GetMessage());
             }

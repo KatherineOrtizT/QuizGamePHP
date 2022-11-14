@@ -45,11 +45,11 @@
         </div>
       </div>
 </nav> 
+
     <div class="container">  
       <div class="row">  
         <div class="col-sm-2 col-md-4">
           <?php
-         
           $imagen="";
           $texto="";
           //Cambia la variable imagen y texto dependiendo de la puntuación del jugador

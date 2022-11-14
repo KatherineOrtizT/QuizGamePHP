@@ -37,6 +37,9 @@
         }
         //Recibe 3 parámetros a insertar en la tabla después de cada partida el nombre del usuario los puntos y el juegos
         public function setPuntos($usuario,$puntos,$juego){
+            if($puntos==5){
+                $puntos="05";
+            }
             $sql="INSERT INTO puntuaciones (nombreUsuario,puntuacion,juego)values (:usu,:pun, :juego)"; //crear la sentencia
             $sentencia=$this->base->prepare($sql);
             $sentencia->execute(array(":usu"=>$usuario, ":pun"=>$puntos,":juego"=>$juego));
@@ -45,6 +48,15 @@
         //Da las 5 mejores puntuaciones de todos los jugadores de todos los juegos
         public function setMejoresPuntos(){
             $sql="SELECT * from puntuaciones ORDER BY puntuacion desc limit 5"; //crear la sentencia
+            $sentencia=$this->base->prepare($sql);
+            $sentencia->execute(array());
+            $puntos =$sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $puntos;
+            $this->base=null;
+        }
+        //Da un array con las puntuaciones de los usuarios
+        public function setUltimosJugadores(){
+            $sql="SELECT * from puntuaciones"; //crear la sentencia
             $sentencia=$this->base->prepare($sql);
             $sentencia->execute(array());
             $puntos =$sentencia->fetchAll(PDO::FETCH_ASSOC);

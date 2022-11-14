@@ -1,6 +1,3 @@
-<?php
-    $registros=[1,2,3,4];
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,6 +52,9 @@
 
         <div class="col-sm-12 col-md-12">
             <!-- tabla de mejores puntuaciones juego Whiskie -->
+            <br>
+              <h1>5 Mejores jugadores</h1> 
+              <br>
             <table class="table table-striped">
                 <thead>
                 <tr>
@@ -66,17 +66,46 @@
                 </thead>
                 <tbody>
                   
-                <?php foreach($arrayPuntos as $puntuacinos):?>
+                <?php $contadorpuesto=1; foreach($arrayPuntos as $puntuacinos):?>
                         <tr>
-                            <td><?php echo "1";?></td>
+                            <td><?php echo $contadorpuesto;?></td>
                             <td><?php echo $puntuacinos["nombreUsuario"];?></td>
                             <td><?php echo $puntuacinos["Juego"];?></td>
                             <td><?php echo $puntuacinos["puntuacion"];?></td>
+                            <?php $contadorpuesto++; ?>
                         </tr> 
                     <?php endforeach;?>
                 </tbody>
             </table>
-         
+             <br>
+              <h1>5 ultimos jugadores</h1> 
+              <br>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th class="col-md-2">Puesto</th>
+                    <th class="col-md-5">Usuario</th>
+                    <th class="col-md-3">Juego</th>
+                    <th class="col-md-2">Puntuación</th>
+                </tr>
+                </thead>
+                <tbody>
+                 
+                  
+                <?php $contadorpuesto=1; foreach($arrayJugadores as $puntuacinos):?>
+                        <tr>
+                            <td><?php echo $contadorpuesto;?></td>
+                            <td><?php echo $puntuacinos["nombreUsuario"];?></td>
+                            <td><?php echo $puntuacinos["Juego"];?></td>
+                            <td><?php echo $puntuacinos["puntuacion"];?></td>
+                            <?php $contadorpuesto++; 
+                            if($contadorpuesto==6){
+                              break;
+                            }?>
+                        </tr> 
+                    <?php endforeach;?>
+                </tbody>
+            </table>
         </div>
         <div class="col-sm-12 col-md-7">
         </div>

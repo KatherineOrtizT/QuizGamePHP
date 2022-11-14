@@ -21,8 +21,24 @@
                 $valor =$_POST["respuesta"];
             }
          
-            if(isset($_POST["respuestaa"])){ //Para las respuestas de checkbox
-                $valor=$_POST["respuestaa"].$_POST["respuestab"].$_POST["respuestac"].$_POST["respuestad"];
+            if(isset($_POST["respuestaa"] )||isset( $_POST["respuestab"])||isset( $_POST["respuestac"] )||isset( $_POST["respuestad"])){ //Para las respuestas de checkbox
+                 $resA="";
+                $resB="";
+                $resC="";
+                $resD="";
+                if(isset($_POST["respuestaa"])){
+                    $resA=$_POST["respuestaa"];
+                }
+                if(isset($_POST["respuestab"])){
+                    $resB=$_POST["respuestab"];
+                }
+                if(isset($_POST["respuestac"])){
+                    $resC=$_POST["respuestac"];
+                }
+                if(isset($_POST["respuestad"])){
+                    $resD=$_POST["respuestad"];
+                }
+                $valor=$resA.$resB.$resC.$resD;
             }
             if($valor==$respondio){
                 $_SESSION["puntuacion"]=$_SESSION["puntuacion"]+5;
@@ -70,6 +86,17 @@
                     <tr><th colspan="2"><?php echo $registro["pregunta"]?><input type="hidden" name="correcta" value="<?php echo $correcta;?>"></th></tr>
                     <tr><td><?php echo $registro["a"];?><input type="<?php echo $registro["tipo"];?>" name="respuesta"min="0" max="2"></td><td><?php echo $registro["b"];?></td></tr>
                
+                <?php endif;?>
+                <?php if($registro["tipo"]=="select"):?>
+                    <tr><th colspan="2"><?php echo $registro["pregunta"]?><input type="hidden" name="correcta" value="<?php echo $correcta;?>"></th></tr>
+                   <tr><td> 
+                    <select name="respuesta">
+                        <option value="a"><?php echo $registro["a"];?></option>
+                        <option value="b"><?php echo $registro["b"];?></option>
+                        <option value="c"><?php echo $registro["c"];?></option>
+                        <option value="d"><?php echo $registro["c"];?></option>
+                    </select>
+                    </td></tr>
                 <?php endif;?>
                 <tr>
                 <td colspan="2"><input type="submit" name="enviar" value="Siguiente"></td>

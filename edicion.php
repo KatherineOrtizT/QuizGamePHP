@@ -16,7 +16,8 @@ $tipo=$_FILES["imagen"]["type"];
 $nombreTem=$_FILES["imagen"]["tmp_name"];
     if($tamaño<=1000000){ //Limitamos el tamaño de la imagen
         if($tipo=="image/jpg"||$tipo=="image/jpeg"||$tipo=="image/png"||$tipo=="image/gif"){//que solo puedan subir imagenes
-            $carpeta=$_SERVER['DOCUMENT_ROOT'].'/katty/LOGIN/imagenes/';
+           // $carpeta=$_SERVER['DOCUMENT_ROOT'].'/katty/LOGIN/imagenes/'; //con ruta absoluta
+            $carpeta='./imagenes/'; 
             move_uploaded_file($_FILES["imagen"]["tmp_name"],$carpeta.$archivo);
             session_start(); 
             $_SESSION["fotoperfil"]=$archivo;

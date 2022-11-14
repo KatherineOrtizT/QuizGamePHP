@@ -91,8 +91,8 @@
       <div class="col-sm-12 col-md-5">
             <h1><?php echo " Hola ".$_SESSION["nombreUsuario"]."<br>";?></h1>
             <p>Bienvenido al Juego de 2do de DAW</p>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium temporibus libero quae fuga perspiciatis nam.</p>
-            <a href="">Editar</a>
+            <p>Proyecto de Php Quiz Game dos juegos enjoy!!</p>
+           
       </div>
        <!-- Instanciamos el número de De juegos, la cantidad de insignias y ganarInsignia(en 3 Porque es cuando se gana la primera insignia)
               Con el require_once sacamos el arrayPuntos(datos sobre las 5 mejores jugadas) y partidasJugadas(Cantidad de juegos del usuario)-->
@@ -152,10 +152,7 @@
               <span><?php echo $cantidadInsigina;?></span>
             </div>
 
-            <div class="stats">
-              <h6 class="mb-0">Partidas Top 5</h6>
-              <span>0</span>
-            </div>
+            
 
           </div>
           
@@ -179,9 +176,8 @@
             <?php foreach($arrayPuntos as $puntuacion):?>
               <tr>
                   <td><?php echo $puntuacion["nombreUsuario"];?></td>
-                  <td>Whisky</td> 
+                  <td><?php echo $puntuacion["Juego"];?></td> 
                   <td><?php echo $puntuacion["puntuacion"];?></td>
-              
               </tr> 
             <?php endforeach;?>
           </tbody>
